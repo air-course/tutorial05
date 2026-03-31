@@ -1,0 +1,108 @@
+<robot name="robot">
+  <link name="base_footprint"></link>
+  <joint name="base_joint" type="fixed">
+    <parent link="base_footprint" />
+    <child link="base_link" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 1.5707963267948966 0" />
+      <geometry>
+        <cylinder radius="0.5" length="1" />
+      </geometry>
+      <material name="base_link-material">
+        <color rgba="0.04666508633021928 0.03954623527052923 0.061246054224174035 1" />
+      </material>
+    </visual>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="1" />
+      <inertia ixx="0.3333333333333333" ixy="0" ixz="0" iyy="0.5" iyz="0" izz="0.3333333333333333" />
+    </inertial>
+  </link>
+  <joint name="base_link_to_cylinder1" type="fixed">
+    <parent link="base_link" />
+    <child link="cylinder1" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+  <link name="cylinder1">
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5707963267948963 0 0" />
+      <geometry>
+        <cylinder radius="0.2" length="3" />
+      </geometry>
+      <material name="cylinder1-material">
+        <color rgba="0.1844749944900301 0.181164244239483 0.19806931954941637 1" />
+      </material>
+    </visual>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="1" />
+      <inertia ixx="0.3333333333333333" ixy="0" ixz="0" iyy="0.5" iyz="0" izz="0.3333333333333333" />
+    </inertial>
+  </link>
+  <joint name="base_link_to_cylinder2" type="fixed">
+    <parent link="base_link" />
+    <child link="cylinder2" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+  <link name="cylinder2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="0.2" length="3" />
+      </geometry>
+      <material name="cylinder2-material">
+        <color rgba="0.1844749944900301 0.181164244239483 0.19806931954941637 1" />
+      </material>
+    </visual>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="1" />
+      <inertia ixx="0.3333333333333333" ixy="0" ixz="0" iyy="0.5" iyz="0" izz="0.3333333333333333" />
+    </inertial>
+  </link>
+  <joint name="base_link_to_cylinder3" type="fixed">
+    <parent link="base_link" />
+    <child link="cylinder3" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+  <link name="cylinder3">
+    <visual>
+      <origin xyz="0 0 0" rpy="0.7853981633974484 0 0" />
+      <geometry>
+        <cylinder radius="0.2" length="3" />
+      </geometry>
+      <material name="cylinder3-material">
+        <color rgba="0.1844749944900301 0.181164244239483 0.19806931954941637 1" />
+      </material>
+    </visual>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="1" />
+      <inertia ixx="0.3333333333333333" ixy="0" ixz="0" iyy="0.5" iyz="0" izz="0.3333333333333333" />
+    </inertial>
+  </link>
+  <joint name="base_link_to_cylinder4" type="fixed">
+    <parent link="base_link" />
+    <child link="cylinder4" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+  <link name="cylinder4">
+    <visual>
+      <origin xyz="0 0 0" rpy="-0.7853981633974485 0 0" />
+      <geometry>
+        <cylinder radius="0.2" length="3" />
+      </geometry>
+      <material name="cylinder4-material">
+        <color rgba="0.1844749944900301 0.181164244239483 0.19806931954941637 1" />
+      </material>
+    </visual>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="1" />
+      <inertia ixx="0.3333333333333333" ixy="0" ixz="0" iyy="0.5" iyz="0" izz="0.3333333333333333" />
+    </inertial>
+  </link>
+</robot>
