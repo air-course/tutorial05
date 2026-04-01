@@ -98,7 +98,7 @@ class CompassWalkerPlant:
 
         return self.t_values, self.x_values
 
-    def animate_from_data(self, Tsim, Xsim, skip = 1, fps = 30, save_video=False):
+    def animate_from_data(self, Tsim, Xsim, dt = 0.01, fps = 30, save_video=False, skip = 1):
         """
         Animate a compass walker using precomputed states.
         
@@ -111,9 +111,9 @@ class CompassWalkerPlant:
                 Whether to save the animation as a video
         """
         self.t_values = Tsim
-        self.x_values = np.array(Xsim)[::skip]
-        self.phase_portrait_values = np.array(Xsim)[::skip, :2]  # Assuming theta and theta_dot are first two states
-    
+        self.x_values = np.array(Xsim)
+        self.phase_portrait_values = np.array(Xsim)[:, [0,2]]
+        
         fig, (self.animation_ax, self.ps_ax) = plt.subplots(1, 2, figsize=(10, 5))
         self.animation_plots = []
     
@@ -136,13 +136,13 @@ class CompassWalkerPlant:
         self.ps_ax.set_ylim(-1.0, 1.0)
         self.animation_plots.append(ps_plot)
     
-        num_steps = len(Tsim)
-        frames = range(num_steps)
+        num_steps = int(len(Tsim))
+        frames = range(0, num_steps, skip)
     
         animation = FuncAnimation(
             fig, self._animation_step, frames=frames,
             init_func=self._animation_init, blit=True,
-            repeat=False, interval=(Tsim[1]-Tsim[0])*1000
+            repeat=False, interval=(dt*skip)*1000
         )
     
         if save_video:
@@ -196,7 +196,7 @@ class CompassWalkerPlant:
     def _ps_update(self, i):
         """Update phase space plot up to current frame i"""
         if hasattr(self, 'phase_portrait_values') and len(self.phase_portrait_values) > 0:
-            data = np.array(self.phase_portrait_values[:i+1])
+            data = np.array(self.phase_portrait_values)[:i+1, :]
             theta, theta_dot = data.T
             self.animation_plots[-1].set_data(theta, theta_dot)
         return self.animation_plots
